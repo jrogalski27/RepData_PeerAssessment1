@@ -82,13 +82,6 @@ Next, the new dataset is created which will replace the "NA" values.
 
 ```r
 library(plyr)
-```
-
-```
-## Warning: package 'plyr' was built under R version 3.3.1
-```
-
-```r
 impute.mean <- function(x) replace (x, is.na(x), mean(x, na.rm = TRUE))
 newdata <- ddply(mydata, ~ interval, transform, steps = impute.mean(steps))
 nas <- sum(is.na(newdata))
@@ -115,6 +108,13 @@ The R code for this calculation is:
 
 ```r
 library(timeDate)
+```
+
+```
+## Warning: package 'timeDate' was built under R version 3.3.3
+```
+
+```r
 newdata$daytype <- isWeekday(newdata$date)
 newdap <- aggregate(.~interval+daytype, data = newdata, FUN = mean, simplify = TRUE, drop = TRUE)
 newdap$daytype[newdap$daytype == TRUE] <- "Weekday"
@@ -123,3 +123,4 @@ ggplot(data=newdap, aes(x=interval,y=steps)) + geom_line() +labs(title="5-Minute
 ```
 
 ![](PA1_template_files/figure-html/weekend-1.png)<!-- -->
+End of report.

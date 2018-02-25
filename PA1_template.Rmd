@@ -96,3 +96,4 @@ newdap$daytype[newdap$daytype == TRUE] <- "Weekday"
 newdap$daytype[newdap$daytype == FALSE] <- "Weekend"
 ggplot(data=newdap, aes(x=interval,y=steps)) + geom_line() +labs(title="5-Minute Interval Averaged Steps Taken - All Dates",x="Time Interval",y="Steps")+facet_grid(daytype~.)
 ```
+End of report.
